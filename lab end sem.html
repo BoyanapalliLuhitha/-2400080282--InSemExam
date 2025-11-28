@@ -6,7 +6,7 @@
   <title>KL Student Portal</title>
 
   <style>
-    /* ============ THEME VARIABLES ============ */
+  
     :root {
       --bg: #ffffff;
       --text: #111;
@@ -21,7 +21,7 @@
       --nav: #1f242a;
     }
 
-    /* ============ GLOBAL STYLES ============ */
+  
     body {
       margin: 0;
       padding: 0;
@@ -30,7 +30,7 @@
       font-family: "Arial", sans-serif;
     }
 
-    /* ============ NAVBAR ============ */
+  
     .navbar {
       background: var(--nav);
       padding: 15px 20px;
@@ -49,7 +49,7 @@
       color: var(--text);
     }
 
-    /* ============ DASHBOARD ============ */
+    
     .main {
       padding: 25px;
     }
@@ -71,13 +71,12 @@
 
 <body>
 
-  <!-- ============ NAVIGATION BAR ============ -->
   <nav class="navbar">
     <h2>KL Student Portal</h2>
     <button id="themeToggle" class="theme-btn">🌙 Dark Mode</button>
   </nav>
 
-  <!-- ============ MAIN DASHBOARD ============ -->
+
   <main class="main">
     <h1>Welcome to KL Student Portal</h1>
 
@@ -88,17 +87,17 @@
     </div>
   </main>
 
-  <!-- ============ JS: THEME LOGIC ============ -->
+
   <script>
     const body = document.documentElement;
     const btn = document.getElementById("themeToggle");
 
-    // Load theme from localStorage
+  
     let savedTheme = localStorage.getItem("portal-theme") || "light";
     body.setAttribute("data-theme", savedTheme);
     btn.textContent = savedTheme === "light" ? "🌙 Dark Mode" : "☀️ Light Mode";
 
-    // Toggle theme
+  
     btn.addEventListener("click", () => {
       const current = body.getAttribute("data-theme");
       const nextTheme = current === "light" ? "dark" : "light";
