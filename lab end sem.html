@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KL Student Portal</title>
+
+  <style>
+    /* ============ THEME VARIABLES ============ */
+    :root {
+      --bg: #ffffff;
+      --text: #111;
+      --card: #f3f3f3;
+      --nav: #e5e5e5;
+    }
+
+    [data-theme="dark"] {
+      --bg: #0d1117;
+      --text: #f0f6fc;
+      --card: #161b22;
+      --nav: #1f242a;
+    }
+
+    /* ============ GLOBAL STYLES ============ */
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Arial", sans-serif;
+    }
+
+    /* ============ NAVBAR ============ */
+    .navbar {
+      background: var(--nav);
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .theme-btn {
+      padding: 8px 15px;
+      border: none;
+      font-size: 15px;
+      cursor: pointer;
+      border-radius: 6px;
+      background: var(--card);
+      color: var(--text);
+    }
+
+    /* ============ DASHBOARD ============ */
+    .main {
+      padding: 25px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .card {
+      padding: 20px;
+      background: var(--card);
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ============ NAVIGATION BAR ============ -->
+  <nav class="navbar">
+    <h2>KL Student Portal</h2>
+    <button id="themeToggle" class="theme-btn">🌙 Dark Mode</button>
+  </nav>
+
+  <!-- ============ MAIN DASHBOARD ============ -->
+  <main class="main">
+    <h1>Welcome to KL Student Portal</h1>
+
+    <div class="grid">
+      <div class="card">Attendance Summary</div>
+      <div class="card">Internal Marks</div>
+      <div class="card">Upcoming Exams</div>
+    </div>
+  </main>
+
+  <!-- ============ JS: THEME LOGIC ============ -->
+  <script>
+    const body = document.documentElement;
+    const btn = document.getElementById("themeToggle");
+
+    // Load theme from localStorage
+    let savedTheme = localStorage.getItem("portal-theme") || "light";
+    body.setAttribute("data-theme", savedTheme);
+    btn.textContent = savedTheme === "light" ? "🌙 Dark Mode" : "☀️ Light Mode";
+
+    // Toggle theme
+    btn.addEventListener("click", () => {
+      const current = body.getAttribute("data-theme");
+      const nextTheme = current === "light" ? "dark" : "light";
+
+      body.setAttribute("data-theme", nextTheme);
+      localStorage.setItem("portal-theme", nextTheme);
+
+      btn.textContent = nextTheme === "light" ? "🌙 Dark Mode" : "☀️ Light Mode";
+    });
+  </script>
+
+</body>
+</html>
